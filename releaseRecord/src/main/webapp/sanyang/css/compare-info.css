@@ -1,0 +1,244 @@
+/* 排版文字占用宽度 */
+.mw80 { min-width: 80px; }
+.mw100 { min-width: 100px; }
+html, body { 
+    width: 100%; 
+    height: 100%; 
+    min-width: 1366px;
+}
+.content {
+    font-family: 'MicrosoftYaHei';
+}
+.content-box {
+    padding: 0 20px;
+}
+.title {
+    /* width: 100%; */
+    /* height: 52px; */
+    height: 100px;
+    line-height: 80px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 160px;
+}
+.pro-pic {
+    height: 100%;
+}
+.pro-pic .pro-top {
+    width: 70px;
+    height: 64px;
+    margin: 5px auto;
+    /* background-color: #000; */
+}
+.pro-pic .pro-bottom {
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+.pro-pic .pro-now {
+    color: #1773d0;
+}
+.pro-bar {
+    width: 144px;
+    height: 15px;
+    margin-top: 43px;
+    background-image: url('../imgs/info_pro_13.jpg');
+    background-repeat: no-repeat;
+    background-size: 144px 15px;
+}
+.check-top,
+.comp-top,
+.bill-top,
+.out-top {
+    background-size: 70px 64px;
+    background-repeat: no-repeat;
+}
+.check-top {
+    background-image: url('../imgs/info_01_03.png');
+}
+.comp-top {
+    background-image: url('../imgs/info_02_06.png');
+}
+.bill-top {
+    background-image: url('../imgs/info_03_08.png');
+}
+.out-top {
+    background-image: url('../imgs/info_04_10.png');
+}
+.basic-info {
+    height: 353px;
+    border-top: 1px solid #6bc8ea;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, 0.1);
+    padding: 0 20px;
+}
+.basic-title, .detention-title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px dashed #dbdbdb;
+}
+.basic-title i, .detention-title i {
+    width: 12px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-right: 10px;
+}
+.basic-title .title-text, .detention-title .title-text {
+    display: inline-block;
+}
+.basic-content {
+    height: 302px;
+    padding: 0 30px 0 26px;
+}
+.basic-img {
+    width: 170px;
+    height: 100%;
+    margin-right: 80px;
+}
+.outer-img {
+    width: 150px;
+    height: 207px;
+    padding: 10px;
+    margin: 20px 0 30px 0;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, .1);
+}
+.inside-img {
+    width: 100%;
+    height: 100%;
+}
+.basic-detail {
+    height: 100%;
+}
+
+.detail-content {
+    margin: 20px 0;
+    height: 262px;
+}
+.detail-item {
+    height: 30%;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #efefef;
+}
+.detail-item ul {
+    width: 100%;
+    height: 100%;
+}
+.basic-job {
+    border: none;
+}
+.basic-id-list, 
+.basic-job-list {
+    width: 33%;
+    height: 100%;
+}
+.basic-city {
+    height: 40%;
+}
+.basic-city-list {
+    width: 33%;
+    height: 100%;
+}
+.basic-id-list div, 
+.basic-job-list div, 
+.basic-city-list div {
+    display: table;
+}
+.basic-id-list div span, 
+.basic-job-list div span, 
+.basic-city-list div span {
+    display: table-cell;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.basic-id-list div, 
+.basic-job-list div {
+    height: 50%;
+}
+.basic-city-list div {
+    height: 33.3%;
+}
+.detention-info {
+    height: 183px;
+    margin-top: 20px;
+    border-top: 1px solid #f4c085;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, 0.1);
+    padding: 0 20px;
+}
+.detention-content {
+    width: 100%;
+    height: 132px;
+}
+.detention-content .list-box {
+    padding: 10px 80px;
+}
+.list-box li {
+    width: 25%;
+    color: #333;
+    /* height: 100%; */
+}
+.detention-item div {
+    height: 33.3%;
+    display: table;
+}
+.detention-item div span {
+    display: table-cell;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* 底部按钮 */
+.btn-box {
+    height: 34px;
+    margin-top: 20px;
+}
+.btn-box .layui-btn {
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+}
+.btn-box .layui-btn:first-child {
+    color: #fff;
+    background-color: #1773d0;
+}
+.layui-layer {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
+}
+.layui-layer-content {
+    line-height: 143px;
+    text-align: center;
+}
+.layui-layer-btn a {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.layui-layer-btn a:first-child {
+    border: solid 1px #999;
+    background-color: #fff;
+    color: #333;
+}
+.layui-layer-btn a:first-child+a {
+    border: none;
+    background-color: #1773d0;
+    color: #fff;
+}

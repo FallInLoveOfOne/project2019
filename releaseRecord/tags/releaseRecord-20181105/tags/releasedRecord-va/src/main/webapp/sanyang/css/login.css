@@ -1,0 +1,116 @@
+html, body { 
+    width: 100%; 
+    height: 100%; 
+    min-width: 1366px;
+}
+.placeholder{
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+.login-box {
+    height: 426px;
+    height: 426px;
+    position: fixed;
+    z-index:5;
+    top: 50%;
+    left: 50%;
+    margin-left: -252px;
+    margin-top: -213px;
+}
+.top-pic {
+    width: 70px;
+	height: 70px;
+    box-shadow: 0 0 4px 0 rgba(3, 3, 3, .91);
+    background-image: url('../imgs/login_02_03.png');
+    background-size: 70px 70px;
+    background-repeat: no-repeat; 
+    margin: 0 auto 26px;
+}
+.top-title {
+    font-family: 'FZLTKHK--GBK1-0';
+	font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+.user-name, .user-passwords {
+    width: 400px;
+    height: 38px;
+    margin: 0 auto;
+}
+.user-name input, .user-passwords input {
+    display: block;
+    float: left;
+    width: 360px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 10px;
+    border: none;
+    font-family: 'MicrosoftYaHei';
+	font-size: 18px;
+    color: #fff;
+    background-color: transparent; 
+}
+.user-name {
+    margin-top: 70px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #0c4b7a;
+}
+.user-passwords {
+    border-bottom: 1px solid #0c4b7a;
+}
+.icon-account, .icon-password {
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #5d7b91;
+    float: left;
+    margin-top: 9px;
+    margin-right: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.login-btn {
+    width: 400px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    font-family: 'MicrosoftYaHei';
+	font-size: 18px;
+    color: #fff;
+    background-color: #1773d0;
+    border-radius: 23px;
+    margin: 50px auto 30px;
+    cursor: pointer;
+}
+.tips {
+	color:grey;
+	position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 30px;
+    text-align: center;
+}
+.tips-spe {
+	color: #1773d0;
+	text-decoration: underline;
+    cursor: pointer;
+}
+.forget-pw {
+    width: 80px;
+    height: 15px;
+    line-height: 15px;
+    font-size: 16px;
+    color: #247bbd;
+    margin: 20px auto 0;
+    cursor: pointer;
+}
+.dpblock { display: block; }
+.dpnone { display: none; }

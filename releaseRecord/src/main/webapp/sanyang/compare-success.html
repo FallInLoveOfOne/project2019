@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>照片信息对比(成功)</title>
+        <link rel="stylesheet" href="../resources/commons/css/base.css" />
+        <link rel="stylesheet" href="../resources/commons/css/widget.css" />
+        <link rel="stylesheet" href="../resources/commons/js/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" href="./css/topbar.css" />
+        <link rel="stylesheet" href="./css/compare-success.css" />
+        <style>
+            .old-img, .new-img  {
+                behavior:url('./css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                box-shadow: 0 0 10px 0 #eaeef2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            <div class="top-l fl">
+                    <img src="./imgs/police.png" alt="">
+                <span class="top-l-title">温州市三垟强制隔离戒毒所防放错智能管理系统</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="title clearfix">
+                <div class="pro-pic basic-check fl">
+                    <div class="check-top pro-top"></div>
+                    <div class="check-bottom pro-bottom pro-now">基本信息审核</div>
+                </div>
+                <div class="pro-bar bar-now fl"></div>
+                <div class="pro-pic pic-comp fl">
+                    <div class="comp-top pro-top"></div>
+                    <div class="comp-bottom pro-bottom pro-now">头像对比</div>
+                </div>
+                <div class="pro-bar fl"></div>
+                <div class="pro-pic upload-bill fl">
+                    <div class="bill-top pro-top"></div>
+                    <div class="bill-bottom pro-bottom">出所单上传</div>
+                </div>
+                <div class="pro-bar fl"></div>
+                <div class="pro-pic out-success fl">
+                    <div class="out-top pro-top"></div>
+                    <div class="out-bottom pro-bottom">出所成功</div>
+                </div>
+            </div>
+            <div class="img-box">
+                <div class="option-box clearfix">
+                    <div class="old-img fl">
+                        <div class="old-top"></div>
+                        <div class="old-bottom">原头像</div>
+                    </div>
+                    <div class="text-img fl">
+                        <div class="text-box">
+                            <div class="success-img">
+                                <i class="iconfont-sy">&#xe74c;</i>
+                            </div>
+                            <div class="success-text">头像对比成功</div>
+                            <div class="success-btn">
+                                <button class="layui-btn">下一步</button>
+                                <button class="layui-btn layui-btn-primary">跳过</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="new-img fl">
+                        <div class="new-top"></div>
+                        <div class="new-bottom">摄像头拍摄</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-config-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/layui/layui.js"></script>
+    <script>
+        seajs.use(['./js/layout.js','./js/compare-success.js']);
+    </script>
+</html>

@@ -1,0 +1,58 @@
+<template>
+    <class id="tFcfInterfaceEntity">
+        <!--添加数据接口调用信息	shiyy-->
+        <sql id="addTFcfInterfaceEntity">
+            <![CDATA[
+				INSERT INTO
+					T_FCF_INTERFACE ( ID, INTERFACE_NAME, URL, CALL_TIME, CALL_MODULE )
+					VALUES(:id, :interfaceName, :url, :callTime, :callModule)
+			]]>
+        </sql>
+
+        <!--分页查询数据接口的调用信息   shiyy-->
+        <sql id="pageFindTFcfInterfaceEntity">
+            <![CDATA[
+				SELECT * FROM
+				    T_FCF_INTERFACE
+				WHERE
+				    1=1
+				<#if interfaceName?? && interfaceName != ''>
+                    AND INTERFACE_NAME LIKE ('%'||:interfaceName||'%')
+               </#if>
+               <#if url?? && url != ''>
+                    AND URL LIKE ('%'||:url||'%')
+               </#if>
+               <#if startDate?? && startDate != ''>
+                    AND to_date(CALL_TIME,'yyyy-mm-dd hh24:mi') >= to_date(:startDate,'yyyy-mm-dd hh24:mi')
+               </#if>
+               <#if endDate?? && endDate != ''>
+                    AND to_date(CALL_TIME,'yyyy-mm-dd hh24:mi') <= to_date(:endDate,'yyyy-mm-dd hh24:mi')
+               </#if>
+               <#if callModule?? && callModule != ''>
+                    AND CALL_MODULE >= LIKE ('%'||:callModule||'%')
+               </#if>
+                ORDER BY to_date(CALL_TIME,'yyyy-mm-dd hh24:mi') DESC
+			]]>
+        </sql>
+
+        <!--查询各接口调用数量占比   shiyy-->
+        <sql id="findInterfaceCallRatioByStartEndTime">
+            <![CDATA[
+	            SELECT
+	                INTERFACE_NAME,
+	                COUNT( INTERFACE_NAME ) AS COUNT
+                FROM
+	                T_FCF_INTERFACE
+	            WHERE
+				    1=1
+               <#if startDate?? && startDate != ''>
+                    AND to_date(CALL_TIME,'yyyy-mm-dd hh24:mi') >= to_date(:startDate,'yyyy-mm-dd hh24:mi')
+               </#if>
+               <#if endDate?? && endDate != ''>
+                    AND to_date(CALL_TIME,'yyyy-mm-dd hh24:mi') <= to_date(:endDate,'yyyy-mm-dd hh24:mi')
+               </#if>
+               GROUP BY INTERFACE_NAME
+			]]>
+        </sql>
+    </class>
+</template>

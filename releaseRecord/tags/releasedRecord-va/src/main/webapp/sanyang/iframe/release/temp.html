@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>iframe</title>
+        <link rel="stylesheet" href="../../../resources/commons/css/base.css" />
+        <link rel="stylesheet" href="../../../resources/commons/css/widget.css" />
+        <link rel="stylesheet" href="../../../resources/commons/js/layui/css/layui.css"  media="all" />
+        <link rel="stylesheet" href="../../css/temp.css" />
+        <style>
+            tbody tr td:first-child .layui-table-cell span {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                border-radius: 10px;
+            }
+            .check-btn {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                border-radius: 2px;
+            }
+            .content-top, .content-bottom {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                box-shadow: 0 0 10px 0 #eaeef2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <!-- 正常待出所 iframe部分 上面查询条件一块 -->
+            <div class="content-top">
+                <div class="tab-bar clearfix">
+                    <div class="out-normal fl">
+                        <i class="iconfont-sy">&#xe739;</i><span class="tab-normal">正常待出所</span>
+                    </div>
+                    <div class="out-temp fl ckbtn">
+                        <i class="iconfont-sy">&#xe73a;</i><span class="tab-temp">临时出所</span>
+                    </div>
+                </div>
+                <div class="conditions clearfix">
+                    <div class="ipt fl">
+                        <div class="ipt-people clearfix">
+                            <div class="people-wait fl">
+                                <label class="layui-form-label">监所编号</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请填写编号"   class="layui-input ipt-placeholder">
+                                </div>
+                            </div>
+                            <div class="people-num fl">
+                                <label class="layui-form-label">人员编号</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请填写编号"   class="layui-input ipt-placeholder">
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="check fr">
+                        <div class="check-bottom clearfix">
+                            <!-- <div class="layui-input-inline temp-btn"></div> -->
+                            <div class="layui-input-inline check-btn fr">查询</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 列表 -->
+            <div class="content-bottom">
+                <div class="table-box">
+                    <table class="layui-hide" id="test" lay-filter="demo"></table>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../../../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../../../resources/commons/js/seajs/sea-config-debug.js"></script>
+    <script type="text/javascript" src="../../../resources/commons/js/layui/layui.js"></script>
+    <script type="text/html" id="sexTpl">
+        {{#  if(d.sex === '男'){ }}
+            <span style='background-color:#7dcfb6;'>月</span>
+        {{#  } else { }}
+            <span style='background-color:#41bff9;'>季</span>
+        {{#  } }}
+    </script>
+    <script type="text/html" id="titleTpr">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">出所</a>
+    </script> 
+    <script>
+        seajs.use(['../../js/layout.js','../../js/temp.js', '../../js/setPlaceholder.js'])
+    </script>
+</html>

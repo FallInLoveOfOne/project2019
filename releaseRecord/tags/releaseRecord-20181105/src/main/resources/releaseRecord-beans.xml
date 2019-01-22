@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/data/jpa 
+            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+            http://www.springframework.org/schema/task  
+			http://www.springframework.org/schema/task/spring-task-3.2.xsd
+            ">
+	
+	<context:annotation-config />
+	
+	<context:component-scan base-package="cn.innosoft.en" use-default-filters="false">
+		<context:include-filter type="aspectj" expression="cn.innosoft.en..*.service.*Service" />
+	</context:component-scan>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxUploadSize" value="5242880000000000"></property><!-- 上传文件大小限制 5M 单位bytes -->
+	</bean>
+	
+	<!-- 加载配置文件-->
+    <bean id="propertiesUtil" class="cn.innosoft.en.util.PropsUtil">
+    	<property name="propertiesName" >
+			<list>
+				<value>releaseRecord-config</value>
+				 <value>orm-config</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="timerQuertz" lazy-init="false" autowire="no"  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="timerJobTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="timerJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="timerJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<!-- 0 0 8,13 * * ? -->
+			<!-- 0 0 8,13 * * ? -->
+			<!-- 0 0 14 * * ? -->
+			<!-- 0/10 * * * * ? -->
+			<value>0 0 8,13 * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="timerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="timerJob" />
+		</property>
+		<property name="targetMethod">
+			<value>timeSynchroData</value>
+		</property>
+	</bean>
+	
+	<!--  init-method="timeSynchroData" -->
+	<bean id="timerJob" class="cn.innosoft.en.releaseRecord.releaseManager.service.TaskService"/>						  			  
+         
+	
+</beans>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/data/jpa 
+            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            ">
+
+    <mvc:annotation-driven conversion-service="conversionService" >
+        <mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+		    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper" />
+                <property name="prettyPrint" value="true"/>
+            </bean> 
+		</mvc:message-converters>
+    </mvc:annotation-driven>
+    
+     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"
+      p:indentOutput="false" p:simpleDateFormat="yyyy-MM-dd" p:modulesToInstall="com.fasterxml.jackson.module.paramnames.ParameterNamesModule" />
+    
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="cn.innosoft.fw.biz.utils.converter.StringToSqlDateConverter"></bean>
+				<bean class="cn.innosoft.fw.biz.utils.converter.StringToSqlTimestampConverter"></bean>
+				<bean class="cn.innosoft.fw.biz.utils.converter.StringToUtilDateConverter"></bean>
+			</list>
+		</property>
+	</bean>
+	
+	<context:component-scan base-package="cn.innosoft.en" use-default-filters="false">
+		<context:include-filter type="aspectj" expression="cn.innosoft.en..resource.*Resource" />
+	</context:component-scan>
+	
+	<mvc:default-servlet-handler />
+	
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>	
+	
+	<bean class="cn.innosoft.fw.biz.base.exception.CustomSimpleMappingExceptionResolver">
+		<!-- 默认的HTTP状态码 -->
+		<property name="defaultStatusCode" value="500" />
+		<!-- 默认的异常处理页面 -->
+		<property name="defaultErrorView" value="error"></property>
+		<!-- 异常处理页面用来获取异常信息的变量名，默认名为exception -->
+		<property name="exceptionAttribute" value="ex"></property>
+		
+		<!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 -->
+		<property name="exceptionMappings">
+			<props>
+				<prop key="cn.innosoft.fw.biz.base.exception.ObjectMessageException">error-0</prop>
+				<prop key="cn.innosoft.en.Exception1">error-1</prop>
+				<prop key="cn.innosoft.en.Exception2">error-2</prop>
+			</props>
+		</property>
+		<!-- 相关状态码对应的错误页面 -->
+		<property name="statusCodes">
+			<props>
+				<prop key="error-0">210</prop>
+				<prop key="error-1">211</prop>
+				<prop key="error-2">212</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+</beans>

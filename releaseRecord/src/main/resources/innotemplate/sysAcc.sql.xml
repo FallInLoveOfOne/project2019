@@ -1,0 +1,39 @@
+<template>
+	<class id="sysAcc">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		<sql id="selectByID">
+			<![CDATA[	
+				select ACC_ID,CREATE_DT
+				from T_SYS_ACC
+			]]>
+		</sql> 
+		
+		<!-- 查询附件信息 -->
+		<sql id="getAccList">
+			<![CDATA[
+			 	select 
+				ACC_ID,CREATE_DT,UPDATE_DT,CREATE_USER_ACCT,CREATE_USER_NAME,UPDATE_USER_ACCT,UPDATE_USER_NAME,
+				ACC_TYPE,ACC_SUFFIX_NAME,ACC_FILE_NAME,ACC_STORAGE_NAME,ACC_STORAGE_PATH
+				from T_SYS_ACC 
+				where 1=1
+				<#if outBusinessId?? && outBusinessId!= ''>
+					and BUSINESS_ID=:outBusinessId
+				</#if>
+				<#if accType?? && accType!= ''>
+					and ACC_TYPE=:accType
+				</#if>
+				order by UPDATE_DT desc,ACC_TYPE desc
+			]]>
+		</sql>
+		
+		<sql id="deleteById">
+			<![CDATA[	
+				delete from T_SYS_ACC where ACC_ID=:accId
+			]]>
+		</sql>
+	</class>
+</template>

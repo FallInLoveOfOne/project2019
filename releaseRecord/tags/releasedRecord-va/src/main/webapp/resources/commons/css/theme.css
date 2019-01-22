@@ -1,0 +1,129 @@
+
+@font-face {font-family: 'wq';
+    src: url('iconfont/iconfont-wq.eot'); /* IE9*/
+    src: url('iconfont/iconfont-wq.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont/iconfont-wq.woff') format('woff'), /* chrome、firefox */
+    url('iconfont/iconfont-wq.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont-wq.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+
+.ghg{font-family:"wq";font-size:16px;font-style:normal;}
+
+@font-face {font-family: 'qy';
+    src: url('iconfont/iconfont-qy.eot'); /* IE9*/
+    src: url('iconfont/iconfont-qy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont/iconfont-qy.woff') format('woff'), /* chrome、firefox */
+    url('iconfont/iconfont-qy.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont-qy.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+
+.qy{font-family:"qy";font-size:16px;font-style:normal;}
+
+.header{
+	background: #288d14;
+	border-bottom: 2px solid #217d0f;
+}
+
+.header .logo img{
+	width: 294px;
+	height: 35px;
+}
+
+.header-nav {
+	padding-right: 40px;
+	padding-left: 24px;
+}
+
+.header-nav .nav-list:hover,.user-info-item:hover{
+    background: #288d14;
+    cursor: pointer;
+}
+
+.sub-nav-list a:hover{
+  color: #fff;
+}
+
+.header-nav .nav-list:hover{
+  background: #217d0f;
+  cursor: pointer;
+}
+
+.user-info-item:hover{
+  background: #217d0f;
+  color: #fff;
+}
+
+.ui-box-head{
+	border:1px solid #d9d9da;
+	border-radius: 3px 3px 0 0;
+	color: #555555;
+}
+
+.ui-box-head-container{
+	background: #f7f7f8
+}
+
+.ui-box-head-title .iconfont{
+	color: #288d14;
+}
+
+.ui-box-container{
+	border: 1px solid #d9d9da;
+}
+
+
+.ui-box-head-underline-tab a.ui-box-head-underline-tab-current{
+    border-bottom: 2px solid #288d14;
+    color: #288d14;
+}
+
+.ui-box-head-underline-tab a:hover{
+   border-bottom: 2px solid #288d14; 
+}
+
+html .ui-dialog-head{
+	background: #288d14;
+}
+
+html .ui-button{
+	background: #288d14;
+}
+
+html .ui-button:hover{
+	background: #288d14;
+}
+
+.ui-form-title h5 {
+	background: none;
+	color: #333333;
+	padding: 0;
+	font-size: 14px;
+}
+
+.ui-form-line{
+	display: inline;
+	float: left;
+	margin: 7px 10px 0 0;
+	width: 4px;
+	height: 14px;
+	background: #288d14;
+}
+
+.ui-form-title{
+	border-bottom: 1px #288d14 solid;
+}
+
+.ui-label {
+    width: 80px;
+    float: left;
+    margin: 5px 11px 0 15px;
+}
+
+.ui-form-operator{
+	float: right;
+	margin-right: 10px;
+}
+
+.ui-form-operator .iconfont{
+	color: #288d15;
+}

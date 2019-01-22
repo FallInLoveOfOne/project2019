@@ -1,0 +1,125 @@
+html, body {
+	height: 100%;
+}
+.report-box {
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px 
+    rgba(16, 50, 85, 0.1);
+}
+.report-title {
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    margin: 0 20px;
+    font-size: 18px;
+    font-family: 'MicrosoftYaHei';
+    color: #333;
+    border-bottom: 1px solid #dbdbdb;
+}
+.report-text {
+    height: 450px;
+    width: 550px;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+.person-detail {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 26px;
+    margin: 15px 0;
+}
+.specil-word {
+    display: inline-block;
+    padding: 0 20px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+}
+.word-id {
+    width: 170px;
+}
+.detail-text {
+    margin-top: 15px;
+}
+.word-reason {
+    width: 320px;
+    text-align: left;
+    padding-left: 10px;
+}
+.person-info {
+    width: 550px;
+    height: 235px;
+    border-radius: 2px;
+    border: solid 1px #cbcbcb;
+    margin-top: 25px;
+    position: relative;
+}
+.person-img {
+    width: 127px;
+    height: 175px;
+    margin: 30px;
+}
+.person-img img {
+    width: 100%;
+    height: 100%;
+}
+.person-detail-info {
+    width: 363px;
+    height: 175px;
+    margin: 30px 0;
+}
+.info-item {
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-name, .info-now-address {
+    height: 22px;
+}
+.info-name {
+    line-height: 14px;
+}
+.report-confirm-btn {
+    width: 70px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #1773d0;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 14px;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+.middle-box {
+    font-size: 14px;
+}
+.pt35 {
+    padding-top: 35px;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.mt40 {
+    margin-top: 40px;
+}
+.h30 {
+    height: 30px;
+}
+.h35 {
+    height: 35px;
+}
+.h257 {
+    height: 257px;
+}

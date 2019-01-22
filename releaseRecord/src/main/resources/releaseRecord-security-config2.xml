@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security" xmlns:b="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<!-- spring security的工作流程，主要是下面三步 -->
+	<!-- 1、认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
+	<!-- 2、访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 -->
+	<!-- 3、资源源数据定义，即定义某一资源可以被哪些角色访问 -->
+	
+	<!-- 不要过滤图片等静态资源，其中**代表可以跨越目录，*不可以跨越目录。 -->
+    <http pattern="/releaseRecord/login/login.jsp" security="none" />
+    <http pattern="/resources/**" security="none" />
+    <http pattern="/**/js/**" security="none" />
+    <http pattern="/**/css/**" security="none" />
+    <http pattern="/**/imgs/**" security="none" />
+    <http pattern="/services/**" security="none" />	
+    
+    <http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+    	<!-- 
+	    session管理：
+	    1.session固化保护-通过session-fixation-protection配置 
+		2.session并发控制-通过concurrency-control配置 
+		如果concurrency-control标签配置了error-if-maximum-exceeded="true"，max-sessions="1"，那么第二次登录时，是登录不了的。
+		如果error-if-maximum-exceeded="false"，那么第二次是能够登录到系统的，但是第一个登录的账号再次发起请求时，会跳转到expired-url配置的url中
+	     -->
+	    <session-management invalid-session-url="/releaseRecord/login/login.jsp" session-fixation-protection="none">
+        	<concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/releaseRecord/login/login.jsp"/>
+        </session-management>
+         
+        <remember-me authentication-success-handler-ref="specificUrlAuthenticationSuccessHandler"/>
+        <logout invalidate-session="true" logout-url="/logout" success-handler-ref="urlLogoutSuccessHandler"/>
+        
+        <access-denied-handler error-page="/403.jsp"/>
+        
+        <!-- 自定义过滤器配置-->
+        <custom-filter ref="loginAuthenticationFilter" position="FORM_LOGIN_FILTER"/>
+        <custom-filter ref="anonymousFilter" after="ANONYMOUS_FILTER"/>
+        <custom-filter ref="securityInterceptor" before="FILTER_SECURITY_INTERCEPTOR"/>
+    </http>
+    
+     <!-- 退出成功时处理类 -->
+	<b:bean id="urlLogoutSuccessHandler" class="cn.innosoft.en.login.client.security.ClientUrlLogoutSuccessHandler">
+		<b:property name="defaultTargetUrl" value="/releaseRecord/login/login.jsp"></b:property>
+		<b:property name="loginUserServer" ref="loginUserServer"></b:property>
+	</b:bean>
+	
+	<!-- 未登录的切入点 -->  
+    <b:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">  
+        <b:property name="loginFormUrl" value="/releaseRecord/login/login.jsp"/>
+    </b:bean> 
+    
+    <!-- 登录认证器  -->
+	<b:bean id="loginAuthenticationFilter" class="cn.innosoft.en.login.client.security.TokenUsernamePasswordAuthenticationFilter">
+		<b:property name="authenticationManager" ref="authenticationManager"/>
+		<b:property name="authenticationSuccessHandler" ref="specificUrlAuthenticationSuccessHandler"/>
+		<b:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"/>
+		<b:property name="usernameParameter" value="token"></b:property>
+		<b:property name="filterProcessesUrl" value="/logon_token"></b:property>
+		<b:property name="loginUserServer" ref="loginUserServer"></b:property>
+	</b:bean>
+	
+    <!-- 认证管理器，实现用户认证的入口，主要实现UserDewtailsService接口即可 -->
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="daoAuthenticationProvider"/>
+    </authentication-manager>
+    
+     <b:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<b:property name="userDetailsService" ref="userDetailService" />
+		<b:property name="hideUserNotFoundExceptions" value="false" />
+	</b:bean>
+	
+    <b:bean id="userDetailService" class="cn.innosoft.en.login.client.security.TokenUserDetailService">
+    	<b:property name="loginUserServer" ref="loginUserServer"></b:property>
+    </b:bean>
+    
+     <!-- 登录及资源验证服务端 -->
+    <b:bean id="loginUserServer" class="cn.innosoft.en.login.client.service.LoginUserServer">
+    	<b:property name="iLoinUserClient" ref="iLoinUserClient"></b:property>
+    	<b:property name="systemId" value="QDBZZG"></b:property>
+    </b:bean>
+    <b:bean id="iLoinUserClient" class="cn.innosoft.en.login.client.persistent.WsLoginUserClient">
+    </b:bean>
+    
+    <!-- 用户认证成功 -->
+	<b:bean id="specificUrlAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+		<!-- <b:property name="defaultTargetUrl" value="/releaseRecord/index/index.jsp"></b:property> -->
+		<b:property name="defaultTargetUrl" value="/home/forward/homePage"></b:property>
+	</b:bean>
+	
+	<!-- 用户认证失败 -->
+	<b:bean id="simpleUrlAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<b:property name="defaultFailureUrl" value="/releaseRecord/login/login.jsp" />
+	</b:bean>
+	 
+	<b:bean id="anonymousFilter" class="cn.innosoft.en.login.client.security.ClientAnonymousFilter">
+		<b:property name="destinationUrl" value="/releaseRecord/login/login.jsp" />
+	</b:bean>
+    
+     <!-- 核心过滤器，配置自定义实现的authenticationManager,accessDecisionManager,securityMetadataSource三个属性-->
+    <b:bean id="securityInterceptor" class="cn.innosoft.en.login.client.security.ClientSecurityFilter">
+        <b:property name="authenticationManager" ref="authenticationManager" />
+        <b:property name="accessDecisionManager" ref="accessDecisionManager" />
+        <b:property name="securityMetadataSource" ref="filterInvocationSecurityMetadataSource" />
+    </b:bean>
+    
+
+	<!-- 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 -->
+	<b:bean id="accessDecisionManager" class="cn.innosoft.en.login.client.security.ClientAccessDecisionManager">
+		<b:property name="loginUserServer" ref="loginUserServer"></b:property>
+	</b:bean>
+	
+	<!-- 资源源数据定义，即定义某一资源可以被哪些角色访问 -->
+	<b:bean id="filterInvocationSecurityMetadataSource" class="cn.innosoft.en.login.client.security.ClientFilterInvocationSecurityMetadataSource" />
+	
+	<!-- 国际化 -->
+	<b:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<b:property name="basename" value="classpath:messages" />
+	</b:bean>
+	
+	<b:bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+	
+</b:beans>

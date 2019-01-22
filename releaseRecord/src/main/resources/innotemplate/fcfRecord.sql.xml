@@ -1,0 +1,41 @@
+<template>
+	<class id="fcfRecord">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		<sql id="selectByID">
+			<![CDATA[	
+				select ID,CREATE_USER_NAME 
+				from T_FCF_RECORD
+			]]>
+		</sql> 
+		
+		<sql id="getRecordList">
+			<!-- 前端不传入排的话可在后端排序    order by name desc-->
+			<![CDATA[
+			 	select 
+				ID,CREATE_USER_NAME,CREATE_TIME,UPDATE_TIME,ITEM,NOW_STAGE
+				from T_FCF_RECORD 
+				where 1=1
+				<#if personNumber?? && personNumber!= ''>
+					and DETOX_NUM=:personNumber
+				</#if>
+				<#if userName?? && userName!= ''>
+				 	and DETOX_NAME=:userName
+				</#if>
+				<#if historyId?? && historyId!= ''>
+				 	and HISTORY_ID=:historyId
+				</#if>
+				order by update_time desc
+			]]>
+		</sql>
+		
+		<sql id="deleteByNumber">
+			<![CDATA[	
+				delete from T_FCF_RECORD where DETOX_NUM=:personNumber
+			]]>
+		</sql>
+	</class>
+</template>

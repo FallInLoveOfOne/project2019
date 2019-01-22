@@ -1,0 +1,76 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f5f7fa;
+}
+.content {
+    margin: 20px;
+    float: left;
+}
+.layui-form-radio {
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+.check-top .layui-input-block {
+    margin-left: 0;
+}
+.check-top .layui-form-item { margin-top: 15px; margin-bottom: 0px; }
+/* .temp-btn { margin: 0 10px 0 215px ; } */
+/* 列表 */
+.content-bottom {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(16, 50, 85, 0.1);
+}
+.table-box .layui-table {
+    width: 100%;
+    color: #323232;
+}
+.table-box .editbtn,
+.table-box .delbtn,
+.table-box .checkbtn {
+    cursor: pointer;
+}
+.table-box .editbtn{
+    margin: 0 5px;
+}
+.table-box .layui-box {
+    float: right;
+}
+.layui-table thead tr {
+    background-color: #f6f7fb;
+}
+.layui-table-page,
+.layui-form {
+    border: none;
+}
+
+.layui-table-cell {
+    color: #323232;
+    font-size: 13px;
+}
+.layui-table-cell .layui-btn-primary,
+.layui-table-cell .layui-btn-xs {
+    border: none;
+    color: #2a93ff;
+    background-color: #fff;
+}
+.layui-table td {
+    border-color: #efefef;
+}
+tbody tr:hover .layui-table-cell .layui-btn-primary, 
+tbody tr:hover .layui-table-cell .layui-btn-xs {
+    background-color: #f2f2f2;
+}
+.layui-table-cell a:nth-child(3) {
+    color: #f14c63;
+}
+.layui-form {
+    margin: 0;
+}
+.layui-table-box .layui-table-header {
+    border: none;
+}
+.layui-table-page {
+    padding-right: 20px;
+}

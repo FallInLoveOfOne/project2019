@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>新增用户</title>
+        <link rel="stylesheet" href="../resources/commons/css/base.css" />
+        <link rel="stylesheet" href="../resources/commons/css/widget.css" />
+        <link rel="stylesheet" href="../resources/commons/js/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" href="./css/topbar.css" />
+        <link rel="stylesheet" href="./css/add-account.css" />
+        <!-- <style>
+            tbody tr td:first-child .layui-table-cell span {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                border-radius: 10px;
+            }
+            .cktimebtn, .temp-btn, .check-btn {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                border-radius: 2px;
+            }
+            .content-top, .content-bottom {
+                behavior:url('../../css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                box-shadow: 0 0 10px 0 #eaeef2;
+            }
+        </style> -->
+    </head>
+    <body>
+        <div class="main">
+            <div class="title">
+                <div class="detention-title">
+                    <div class="top-box">
+                        <i class="iconfont-sy tab-pic">&#xe752;</i>
+                        <span class="title-text">新增账号</span>
+                    </div>
+                </div>
+            </div>
+            <form class="layui-form content">
+                <div class="layui-inline">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="test-out-start" placeholder="-" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">编号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="test-out-start" placeholder="-" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">账号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="test-out-start" placeholder="-" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" class="layui-input" id="test-out-start" placeholder="-" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                <label class="layui-form-label">角色</label>
+                <div class="layui-input-block">
+                    <select name="interest" lay-filter="aihao">
+                    <option value=""></option>
+                    <option value="0">写作</option>
+                    <option value="1" selected="">阅读</option>
+                    <option value="2">游戏</option>
+                    <option value="3">音乐</option>
+                    <option value="4">旅行</option>
+                    </select>
+                </div>
+                </div>
+            </form>
+        </div>
+        <!-- 底部两个按钮 -->
+        <div class="btn-box fr clearfix">
+            <button class="layui-btn layui-btn-normal">保存</button>
+            <button class="layui-btn layui-btn-primary">关闭</button>
+        </div>
+    </body>
+    <script type="text/javascript" src="../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-config-debug.js"></script>
+    <script type="text/javascript" src="../resources/commons/js/layui/layui.js"></script>
+    <script>
+        seajs.use('./js/add-account.js')
+    </script>
+</html>

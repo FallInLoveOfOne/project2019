@@ -1,0 +1,28 @@
+<template>
+	<class id="demo_user">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		<sql id="selectByID">
+			<![CDATA[	
+				select id,name from DEMO_USER where id=:userId
+			]]>
+		</sql> 
+		
+		<sql id="getListQueryPage">
+			<!-- 前端不传入排的话可在后端排序    order by name desc-->
+			<![CDATA[
+			 SELECT 
+			  id,
+			  name
+            FROM DEMO_USER t 
+            where 1=1
+            <#if userName?? && userName!= ''>
+            	AND name like '%${userName}%'
+            </#if>
+			]]>
+		</sql>
+	</class>
+</template>

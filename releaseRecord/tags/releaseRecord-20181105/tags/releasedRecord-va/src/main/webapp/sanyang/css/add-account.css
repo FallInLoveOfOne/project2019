@@ -1,0 +1,56 @@
+body {
+    padding: 0 20px;
+}
+.main {
+    box-shadow: 0 0 10px 0 #eaeef2;
+}
+.content {
+    font-family: 'MicrosoftYaHei';
+    width: 100%;
+    height: 146px;
+}
+.title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}
+.detention-title {
+    padding: 0 20px;
+    color: #333;
+}
+.top-box {
+    border-bottom: 1px dashed #dbdbdb;
+}
+.tab-pic {
+    margin-right: 10px;
+}
+.content .layui-inline {
+    margin: 20px 10px 10px;
+}
+.btn-box {
+    margin-top: 20px;
+    padding: 0 40px;
+}
+.btn-box button {
+    width: 80px;
+    line-height: 38px;
+    box-sizing: border-box;
+    border: solid 1px #999;
+    font-size: 14px;
+    color: #333;
+}
+.btn-box button:first-child {
+    color: #fff;
+}
+.layui-form-item {
+    margin: 20px 10px;
+}
+.layui-form-item, 
+.layui-input-block .layui-select-title {
+    width: 165px;
+    height: 38px;
+    line-height: 38px;
+}
+.layui-unselect, .layui-form-select {
+    width: 165px;
+}

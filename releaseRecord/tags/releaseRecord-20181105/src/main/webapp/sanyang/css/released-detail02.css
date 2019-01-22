@@ -1,0 +1,290 @@
+/* 排版文字占用宽度 */
+.mw80 { min-width: 80px; }
+.mw100 { min-width: 100px; }
+html, body { 
+    width: 100%; 
+    height: 100%; 
+    min-width: 1366px;
+}
+.content {
+    font-family: 'MicrosoftYaHei';
+}
+.content-box {
+    padding: 0 20px;
+}
+.title {
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+    font-size: 16px;
+    color: #333;
+}
+.basic-info {
+    /* height: 353px; */
+    border-top: 1px solid #6bc8ea;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, 0.1);
+    padding: 0 20px;
+}
+.basic-title, .detention-title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px dashed #dbdbdb;
+}
+.basic-title i, .detention-title i {
+    width: 12px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-right: 10px;
+}
+.basic-title .title-text, .detention-title .title-text {
+    display: inline-block;
+}
+.basic-content {
+    height: 300px;
+    padding: 0 30px 0 26px;
+}
+.basic-img {
+    width: 170px;
+    height: 100%;
+}
+.outer-img {
+    width: 150px;
+    height: 207px;
+    margin: 20px 0 30px 0;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, .1);
+}
+.inside-img {
+    width: 100%;
+    height: 100%;
+}
+.basic-detail {
+    height: 260px;
+    padding: 20px 0;
+}
+
+.detail-content {
+    height: 100%;
+    margin-left: 80px;
+    /* margin: 20px 0; */
+}
+.detail-item {
+    height: 27%;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #efefef;
+}
+.basic-city {
+    height: 46%;
+}
+.detail-item ul {
+    width: 100%;
+    height: 100%;
+}
+.basic-job {
+    border: none;
+}
+.basic-id-list, 
+.basic-job-list {
+    width: 33%;
+    height: 100%;
+}
+.basic-city-list {
+    width: 33%;
+    height: 100%;
+}
+.basic-id-list div, 
+.basic-job-list div, 
+.basic-city-list div {
+    display: table;
+}
+.basic-id-list div span, 
+.basic-job-list div span, 
+.basic-city-list div span {
+    display: table-cell;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.basic-id-list div, 
+.basic-job-list div {
+    height: 50%;
+}
+.basic-city-list div {
+    height: 33.3%;
+}
+.detention-info {
+    margin-top: 20px;
+    border-top: 1px solid #f4c085;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, 0.1);
+    padding: 0 20px;
+}
+.detention-content {
+    width: 100%;
+    height: 140px;
+}
+.detention-content .list-box {
+    height: 100px;
+    padding: 20px 80px;
+}
+.list-box li {
+    width: 25%;
+    color: #333;
+    height: 100px;
+}
+.detention-item div {
+    height: 33%;
+    display: table;
+}
+.detention-item div span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: table-cell;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* 底部按钮 */
+.btn-box {
+    height: 34px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.btn-box .layui-btn {
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+}
+.btn-box .layui-btn:first-child {
+    color: #fff;
+    background-color: #1773d0;
+}
+.layui-form {
+    margin: 0;
+}
+.layui-layer {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
+}
+.layui-layer-content {
+    line-height: 143px;
+    text-align: center;
+}
+.layui-layer-btn a {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.layui-layer-btn a:first-child {
+    border: solid 1px #999;
+    background-color: #fff;
+    color: #333;
+}
+.layui-layer-btn a:first-child+a {
+    border: none;
+    background-color: #1773d0;
+    color: #fff;
+}
+.out-record, .certificate-info {
+    box-sizing: border-box;
+    background-color: #fff;
+	box-shadow: 0 0 10px 0 
+        rgba(16, 50, 85, .1);
+    margin-top: 20px;
+    padding: 0 20px;
+}
+.out-record {
+    height: 309px;
+    border-top: 1px solid #7dcfb6;
+}
+.certificate-info {
+    height: 228px;
+    border-top: 1px solid #f37979;
+}
+.record-table {
+    height: 230px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+.title-right {
+    font-size: 14px;
+    font-family: 'MicrosoftYaHei';
+    color: #1773d0;
+    cursor: pointer;
+}
+.title-right i {
+    font-size: 16px;
+    color: #1773d0;
+}
+
+.certificate-table {
+    height: 158px;
+    margin-top: 20px;
+    overflow-y: auto;
+}
+.certificate-table .layui-btn {
+    font-size: 13px;
+    font-family: 'MicrosoftYaHei';
+    color: #1773d0;
+    background-color: #fff;
+}
+.certificate-table .layui-btn:hover {
+    background-color: #f2f2f2;
+}
+.certificate-table .layui-table tbody tr:hover .layui-btn { 
+    background-color: #f2f2f2;
+}
+
+#save-info {
+	width: 100%;
+}
+#save-info tr {
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	border: 1px solid #e6e6e6;         
+}
+#save-info tr td {
+	width: 25%;
+}
+.check-out-btn {
+	height: 30px;
+	line-height: 30px;
+	width: 90px;
+	text-align: center;
+	font-size: 14px;
+	font-family: 'MicrosoftYaHei';
+	color: #1773d0;
+	cursor: pointer;
+	margin: 0 auto;
+}
+.layui-table[lay-skin=line] {
+    width: 100%;
+    border-right: none;
+}
+.layui-table-view {
+    border-bottom: none;
+}
+.out-record3 {
+	margin-top: 20px;
+	padding: 0 20px;
+    border-top: 1px solid #f4c085;
+    box-shadow: 0 0 10px 0 rgba(16, 50, 85, 0.1);
+}

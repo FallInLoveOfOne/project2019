@@ -1,0 +1,45 @@
+<template>
+	<class id="report">
+		<!-- 查询统计报告分页 -->
+		<sql id="getReportList">
+			<![CDATA[
+				select ID "id",create_time "inTime",report_Name "name",REPORT_TYPE "reportType"
+        		from T_FCF_REPORT
+        		where 1=1
+        		<#if report_type?? && report_type!= ''>
+        		and report_type=:report_type
+        		 </#if>
+				${orderSQL}
+			]]>
+		</sql>
+		
+		
+		<!-- 计划出所人数 -->
+		<sql id="getPlanNum">
+			<![CDATA[
+				select count(*)"planNum"
+        		from t_jc_detox_info 
+        		where ${SQL}
+			]]>
+		</sql>
+		
+		<!-- 实际出所人数 以及其他统计-->
+		<sql id="getRealNum">
+			<![CDATA[
+				select * from(
+					(select count(*) realOut from t_fcf_outdetox_info where ${SQL})
+					join(select count(*) normal from t_fcf_outdetox_info where OUT_TYPE_VALUE='normal' and ${SQL})on 1=1  
+					join(select count(*) abnormal from t_fcf_outdetox_info where OUT_TYPE_VALUE='temp' and ${SQL})on 1=1
+					join(select count(*) reviewSucc from t_fcf_outdetox_info where BASE_COFIRM_STA='true' and ${SQL})on 1=1
+					join(select count(*) faceSucc from t_fcf_outdetox_info where PICTURE_STATE='true' and ${SQL})on 1=1
+					join(select count(*) upRecord from t_fcf_outdetox_info where OUT_DOC_STATE='true' and ${SQL})on 1=1
+				)
+	           
+				
+			]]>
+		</sql>
+		
+	
+		
+	</class>
+</template>

@@ -1,0 +1,243 @@
+<template>
+	<!-- 监管接口获取的戒毒人员信息表 -->
+	<class id="jcDetoxInfo">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		
+		<!-- 正常出所人员分页  yyyy-mm-dd hh24:mi-->
+		<sql id="getNormalPage">
+			<![CDATA[	
+				select 
+				"NUMBER","NAME",SEX,SEX_VALUE,DORM_CODE,COME_DATE,OUT_DATE,HOLD_BEGIN,HOLD_END,OUT_TYPE,OUT_TYPE_VALUE,"EXCEPTION",DETOX_END,IMPRISON_LIMIT,IDENTITY_ID
+				from T_JC_DETOX_INFO 
+				where (ALREADY_OUT='N' OR ALREADY_OUT is null)
+				<#if identity?? && identity!= ''>
+            		AND IDENTITY_ID =:identity
+            	</#if>
+				<#if userName?? && userName!= ''>
+            		AND "NAME" like '%${userName}%'
+            	</#if>
+				<#if userNumer?? && userNumer!= ''>
+            		AND "NUMBER" = :userNumer
+            	</#if>
+            	<#if OUT_DATE?? && userSex!= ''>
+            		AND SEX = :userSex
+            	</#if>
+            	<#if outDateStart?? && outDateStart!= ''>
+            		AND (to_date(OUT_DATE,'yyyy-mm-dd')>=to_date(:outDateStart,'yyyy-mm-dd'))
+            	</#if>
+            	<#if outDateEnd?? && outDateEnd!= ''>
+            		AND (to_date(OUT_DATE,'yyyy-mm-dd')<=to_date(:outDateEnd,'yyyy-mm-dd'))
+            	</#if>
+            	<#if exceptionTypeSql?? && exceptionTypeSql!= ''>
+            		AND ${exceptionTypeSql}
+            	</#if>
+            	<#if waitOrNoSql?? && waitOrNoSql!= ''>
+            		AND ${waitOrNoSql}
+            	</#if>
+			]]>
+		</sql> 
+		
+		<!-- 临时出所查询 -->
+		<sql id="getManegeTemporary">
+			<![CDATA[	
+				select 
+				"NUMBER","NAME",SEX,SEX_VALUE,DORM_CODE,COME_DATE,OUT_DATE,HOLD_BEGIN,HOLD_END,OUT_TYPE,OUT_TYPE_VALUE,"EXCEPTION",DETOX_END
+				from T_JC_DETOX_INFO 
+				where (ALREADY_OUT='N' OR ALREADY_OUT is null)
+				<#if dormCode?? && dormCode!= ''>
+            		AND DORM_CODE = :dormCode
+            	</#if>
+				<#if userNumer?? && userNumer!= ''>
+            		AND ("NUMBER" = :userNumer OR IDENTITY_ID=:userNumer)
+            	</#if>
+			]]>
+		</sql>
+		
+		<!-- （废弃）临时出所分页 -->
+		<sql id="getTemporaryPage">
+			<![CDATA[	
+				select 
+				"NUMBER","NAME",SEX,DORM_CODE,COME_DATE,OUT_DATE,OUT_TYPE,OUT_TYPE_VALUE,EXCEPTION
+				from T_JC_DETOX_INFO 
+				where OUT_TYPE_VALUE='unnormal' AND ALREADY_OUT='N' AND ((substr(OUT_DATE,0,8) in (${thisWeek})) OR (to_date(substr(OUT_DATE,0,8),'yyyy-mm-dd') < to_date(:nowDay,'yyyy-mm-dd')))
+				<#if dormCode?? && dormCode!= ''>
+            		AND DORM_CODE = :dormCode
+            	</#if>
+				<#if userNumer?? && userNumer!= ''>
+            		AND "NUMBER" = :userNumer
+            	</#if>
+			]]>
+		</sql> 
+		
+		<!-- 查询出所人员详情信息 -->
+		<sql id="selectOutPersonDetails">
+			<![CDATA[	
+				select 
+				"NAME","NUMBER",SEX,SEX_VALUE,BIRTH,POLITICAL_STATUS,POLITICAL_STATUS_VALUE,HOUSE_ADDR,HOUSE_ADDR_VALUE,NATIONALITY_VALUE,PROCESS_STATE,
+				HOUSE_DETAIL_ADDR,EDUCATION,IDENTITY_ID,WORK_ADDR,WORK,WORK_VALUE,HOLD_END,MANAGE_TYPE_VALUE,"POSITION",EDUCATION_VALUE,DETOX_BEGIN,
+				SPECIAL_INDENTITY,IDENTITY_TYPE,IDENTITY_TYPE_VALUE,SPECIALTY,SPECIALTY_VALUE,EMPHASIS_PERSONER_VALUE,SPECIAL_INDENTITY_VALUE,OUT_PLACE_VALUE,
+				DORM_CODE,DETOX_LIMIT,DETOX_LIMIT_VALUE,DETOX_END,OUT_DATE,OUT_REASON,OUT_REASON_VALUE,BRIEF,KS_USER_ID,IMPRISON_LIMIT,OUT_DOC_STATE
+				from T_JC_DETOX_INFO 
+				where 1=1
+				<#if userNumber?? && userNumber!= ''>
+					and ("NUMBER"=:userNumber OR IDENTITY_ID=:userNumber)
+				</#if>
+				<#if prisonId?? && prisonId!= ''>
+				 	and DORM_CODE=:prisonId
+				</#if>
+			]]>
+		</sql> 
+		
+		<sql id="selectByID">
+			<![CDATA[	
+				select NUMBER,NAME from T_JC_DETOX_INFO where NUMBER=:userId
+			]]>
+		</sql> 
+		
+		<sql id="deleteOneByUserId">
+			<![CDATA[
+				delete from  T_JC_DETOX_INFO where "NUMBER" = :userId
+				
+			]]>
+		</sql>
+
+		<sql id="updateInfoById">
+			<![CDATA[
+				update T_JC_DETOX_INFO 
+				set NAME = :userName 
+				where NUMBER = :userId
+			]]>
+		</sql>
+		
+		<sql id="addOneUser">
+			<![CDATA[
+				insert into  T_JC_DETOX_INFO t
+				  ("NUMBER",
+				   "NAME",
+				   "EXCEPTION",
+				   "IDENTITY",
+				   "WORK",
+				   "POSITION",
+				   "PICTURE_BYTE")
+				values
+				  ('${userId}','${userName}','${exceptionval}','${identityVal}','${workVal}','${postionVal}',TO_BLOB(UTL_RAW.CAST_TO_RAW('${pictureByte}')))   
+				
+
+			]]>
+		</sql>
+		
+		<!-- 将出所成功的同步到T_FCF_OUTDETOX_INFO表中 -->
+		<sql id="copyDetoxToOUTDETOX">
+			<![CDATA[
+				insert into  T_FCF_OUTDETOX_INFO t (select * from T_JC_DETOX_INFO tjc where tjc."NUMBER"=:userNumber)
+			]]>
+		</sql>
+		
+		<!-- 查询待出所、未出所、头像不对失败数量 -->
+		<sql id="selectCount">
+			<![CDATA[	
+				select count("NUMBER") as TOTAL
+				from T_JC_DETOX_INFO 
+				where (ALREADY_OUT='N' OR ALREADY_OUT is null)
+				<#if waitOrNoSql?? && waitOrNoSql!= ''>
+            		AND ${waitOrNoSql}
+            	</#if>
+			]]>
+		</sql> 
+		
+		<!-- 通过旷视人员id查询 -->
+		<sql id="getInfoByKsId">
+			<![CDATA[	
+				select 
+				"NAME","NUMBER",SEX,SEX_VALUE,BIRTH,POLITICAL_STATUS,POLITICAL_STATUS_VALUE,HOUSE_ADDR,HOUSE_ADDR_VALUE,NATIONALITY_VALUE,PROCESS_STATE,OUT_TYPE,
+				HOUSE_DETAIL_ADDR,EDUCATION,IDENTITY_ID,WORK_ADDR,WORK,WORK_VALUE,HOLD_END,MANAGE_TYPE_VALUE,"POSITION",EDUCATION_VALUE,DETOX_BEGIN,ORIGIN_VALUE,
+				SPECIAL_INDENTITY,IDENTITY_TYPE,IDENTITY_TYPE_VALUE,SPECIALTY,SPECIALTY_VALUE,EMPHASIS_PERSONER_VALUE,SPECIAL_INDENTITY_VALUE,OUT_PLACE_VALUE,
+				DORM_CODE,DETOX_LIMIT,DETOX_LIMIT_VALUE,DETOX_END,OUT_DATE,OUT_REASON,OUT_REASON_VALUE,BRIEF,KS_USER_ID,IMPRISON_LIMIT,BASE_COFIRM_STA,OUT_DOC_STATE
+				from T_JC_DETOX_INFO 
+				where (ALREADY_OUT='N' OR ALREADY_OUT is null)
+				<#if ksId?? && ksId!= ''>
+				 	and KS_USER_ID=:ksId
+				</#if>
+			]]>
+		</sql> 
+		
+		
+		<!-- 数据插入 -->
+		<sql id="addOneUserFull">
+			<![CDATA[
+				insert into  T_JC_DETOX_INFO
+				  (NUMBER,--人员编号
+				   NAME,--姓名
+				   OTHER_NAME,--别名
+				   SEX,--性别
+				   SEX_VALUE,--性别value
+				   BIRTH,--出生日期
+				   ETHNIC_GROUP,--民族
+				   ETHNIC_GROUP_VALUE,--民族value
+				   POLITICAL_STATUS,--政治面貌
+				   POLITICAL_STATUS_VALUE,--政治面貌value
+				   NATIONALITY,--国籍
+				   NATIONALITY_VALUE,--国籍value
+				   HOUSE_ADDR,--户籍所在地
+				   HOUSE_ADDR_VALUE,--户籍所在地value
+				   HOUSE_DETAIL_ADDR,--详细地址
+				   MANAGE_TYPE,--人员管理类别
+				   MANAGE_TYPE_VALUE,--人员管理类别value
+				   EMPHASIS_PERSONER,--重口人员
+				   EMPHASIS_PERSONER_VALUE,--重口人员value
+				   IDENTITY_ID,--证件号码
+				   IDENTITY_TYPE,--证件类型
+				   IDENTITY_TYPE_VALUE,--证件类型value
+				   IDENTITY,--身份
+				   IDENTITY_VALUE,--身份value
+				   WORK_ADDR,--工作单位
+				   POSITION,--职务
+				   SPECIALTY,--专长
+				   SPECIALTY_VALUE,--专长value
+				   DORM_CODE,--监室号
+				   DETOX_LIMIT,--戒毒期限
+				   DETOX_LIMIT_VALUE,--戒毒期限value
+				   DETOX_BEGIN,--戒毒开始日期
+				   DETOX_END,--戒毒结束日期
+				   HOLD_DAY,--拘留天数
+				   HOLD_BEGIN,--拘留开始日期
+				   HOLD_END,--拘留结束日期
+				   BRIEF,--简要案情
+				   COME_DATE,--入所日期
+				   COME_REASON,--入所原因
+				   COME_RESON_VALUE,--入所原因value
+				   OUT_DATE,--出所日期
+				   PROCESS_STATE,--出所流程状态
+				   OUT_REASON,--出所原因
+				   OUT_REASON_VALUE,--出所原因value
+				   OUT_PLACE_VALUE,--出所去向value
+				   MARRIAGE,--婚姻状况
+				   MARRIAGE_VALUE,--婚姻状况value
+				   ORIGIN,--籍贯
+				   ORIGIN_VALUE,--籍贯value
+				   EDUCATION,--文化程度
+				   EDUCATION_VALUE,--文化程度value
+				   SPECIAL_INDENTITY,--特殊身份
+				   SPECIAL_INDENTITY_VALUE,--特殊身份value
+				   WORK,--职业
+				   WORK_VALUE,--职业value
+				   PICTURE_BYTE,--图片二进制
+				   OUT_TYPE,--出所类型
+				   OUT_TYPE_VALUE,--出所类型value
+				   PROCESS_TIME,--出所流程确认时间
+				   PICTURE_STATE,--人像对比状态
+				   PICTURE_TIME,--人像对比确认时间
+				   OUT_DOC_STATE,--出所单上传状态
+				   OUT_DOC_TIME,--出所单上传时间
+				   EXCEPTION,--异常原因
+				   UPDATE_TIME)
+				values
+				  (${values})
+			]]>
+		</sql>
+	</class>
+</template>

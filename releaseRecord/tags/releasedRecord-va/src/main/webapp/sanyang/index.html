@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>温州市三垟强制隔离戒毒所防放错智能管理系统</title>
+		<link rel="stylesheet" href="../resources/commons/css/base.css" />
+		<link rel="stylesheet" href="../resources/commons/css/widget.css" />
+        <link rel="stylesheet" href="../resources/commons/js/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" href="./css/topbar.css" />
+        <link rel="stylesheet" href="./css/index.css" />
+    </head>
+    <body>
+        <div class="top-bar">
+            <div class="top-l fl">
+                <img src="./imgs/police.png" alt="">
+                <span class="top-l-title">温州市三垟强制隔离戒毒所防放错智能管理系统</span>
+            </div>
+            <div class="top-r fr">
+                <i class="iconfont-sy icon-user">&#xe756;</i>
+                <span class="top-r-name">张小红</span>
+                <i class="iconfont-sy icon-logout">&#xe73b;</i>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-top clearfix">
+                <div class="main-police fl">
+                    <div class="main-top-title">
+                        <i class="iconfont-sy icon-person">&#xe735;</i>
+                        <!-- <span>今日值班人员</span> -->
+                        <span>快速搜索</span>
+                    </div>
+                    <div class="main-top-item clearfix">
+                        <!-- <div class="police-man man1 fl">
+                            <img src="./imgs/policeman.png" alt="">
+                            <div>
+                                <span class="police-name">王晶</span>
+                                <span class="police-job">警官</span>
+                            </div>
+                        </div>
+                        
+                        <div class="police-man man2 fr">
+                            <img src="./imgs/policeman.png" alt="">
+                            <div>
+                                <span class="police-name">张三丰</span>
+                                <span class="police-job">警官</span>
+                            </div>
+                        </div> -->
+                        <div class="search-item">
+                            <input class="" type="text" name="" id="" placeholder="请输入人员编号">
+                            <button class="">搜索</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-matters fl">
+                    <div class="main-top-title">
+                        <i class="iconfont-sy icon-person icon-things">&#xe738;</i>
+                        <span>处理事项</span>
+                    </div>
+                    <div class="main-top-item things clearfix">
+                        <div class="left-things fl clearfix">
+                            <div class="left-things-item wait-item fl">
+                                <div class="left-things-top">
+                                    <span class="wait-num">84</span>
+                                    <span class="font14">人</span>
+                                </div>
+                                <div class="left-things-bottom">
+                                    <span class="font14">今日待出所</span>
+                                </div>
+                            </div>
+                            <div class="left-things-item over-item fl">
+                                <div class="left-things-top">
+                                    <span class="over-num">16</span>
+                                    <span class="font14">人</span>
+                                </div>
+                                <div class="left-things-bottom ">
+                                    <span class="font14">逾期未处理</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-things fl">
+                            <div class="right-things-item thing1">
+                                <div class="things-num">8</div>
+                                <img class="tip-num-bg" src="./imgs/num-bg.png" alt="">
+                                <img class="tip-icon" src="./imgs/xxsh.png" alt="">
+                                <div>信息审核未通过</div>
+                            </div>
+                            <div class="right-things-item thing2">
+                                <div class="things-num">10</div>
+                                <img class="tip-num-bg" src="./imgs/num-bg.png" alt="">
+                                <img class="tip-icon" src="./imgs/txdb.png" alt="">
+                                <div>头像对比未通过</div>
+                            </div>
+                            <div class="right-things-item thing3">
+                                <div class="things-num">8</div>
+                                <img class="tip-num-bg" src="./imgs/num-bg.png" alt="">
+                                <img class="tip-icon" src="./imgs/csd.png" alt="">
+                                <div>出所单未上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-bottom clearfix">
+                <div class="main-b-l bottom-item fl">
+                    <div class="title-top">
+                        <span class="first-w item-span1"><i class="iconfont-sy">&#xe737;</i></span>
+                        <span class="will-out">最近待出所人员</span>
+                        <span class="check-more fr will-view-more">查看更多</span>
+                    </div>
+                    <div class="main-content">
+                        <div class="table-box">
+                            <table class="layui-hide" id="will-out" lay-filter="will-out"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-b-c bottom-item fl">
+                    <div class="title-top">
+                        <span class="first-w item-span2"><i class="iconfont-sy">&#xe74d;</i></span>
+                        <span class="will-out">最近出所人员</span>
+                        <span class="check-more fr last-view-more">查看更多</span>
+                    </div>
+                    <div class="main-content">
+                        <div class="table-box">
+                            <table class="layui-hide" id="last-out" lay-filter="last-out"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-b-r bottom-item fl">
+                    <div class="title-top clearfix">
+                        <span class="first-w"><i class="iconfont-sy">&#xe736;</i></span>
+                        <span class="will-out">最近报告</span>
+                        <span class="check-more fr report-view-more">查看更多</span>
+                    </div>
+                    <div class="main-content">
+                        <div class="table-box">
+                            <table class="layui-hide" id="last-report" lay-filter="last-report"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript" src="../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-config-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/layui/layui.js"></script>
+	<script>
+        seajs.use("./js/index.js")
+        
+        var w = $('body').width(),
+            h = $('body').height();
+    
+        $('.main').width(w).height(h);
+    
+        $('.bottom-item').width(($('.main-bottom').width() - 40)/3);
+        $('.main-police').width($('.bottom-item').width() + 40);
+        $('.main-matters').width($('.main-top').width() - $('.main-police').width() - 61);
+	</script>
+</body>
+</html>

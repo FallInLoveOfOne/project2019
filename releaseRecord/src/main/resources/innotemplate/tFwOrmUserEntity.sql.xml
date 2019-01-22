@@ -1,0 +1,172 @@
+<template>
+    <class id="tFwOrmUserEntity">
+        <!--修改密码	shiyy-->
+        <sql id="updateUserPassword">
+            <![CDATA[
+				UPDATE T_FW_ORM_USER
+                SET
+                    UPDATE_DT = :UPDATE_DT,
+                    UPDATE_USER_ID = :UPDATE_USER_ID,
+                    UPDATE_USER_ACCT = :UPDATE_USER_ACCT,
+                    UPDATE_USER_ROLE = :UPDATE_USER_ROLE,
+                    USER_ACCT_PWD = :USER_ACCT_PWD
+                WHERE
+	                USER_ID = :USER_ID
+			]]>
+        </sql>
+
+        <!--&lt;!&ndash;分页查询用户信息	shiyy&ndash;&gt;-->
+        <!--<sql id="pageFindTFwOrmUserEntity">-->
+            <!--<![CDATA[-->
+                <!--SELECT-->
+	                <!--t_user.USER_ID,-->
+	                <!--t_user.USER_SERIAL,-->
+	                <!--t_user.USER_ACCT_CN,-->
+	                <!--t_user.USER_ACCT,-->
+	                <!--t_role.ROLE_NAME_CN,-->
+	                <!--t_user.CREATE_DT-->
+                <!--FROM-->
+	                <!--T_FW_ORM_USER t_user LEFT INNER T_FW_ORM_ROLE_U_O_MAP t_map ON t_user.USER_ID = t_map.USER_ID-->
+	                <!--INNER JOIN T_FW_ORM_ROLE t_role ON t_map.ROLE_ID = t_role.ROLE_ID-->
+                <!--WHERE-->
+                    <!--t_user.VALID_SIGN = 'Y'-->
+                    <!--AND t_role.VALID_SIGN = 'Y'-->
+                    <!--AND t_role.ROLE_SERIAL in('BIANJIJIAOSE','CHAKANJIAOSE')-->
+	                <!--AND t_user.USER_ACCT_TYPE = 'NORMAL'-->
+	                <!--<#if name?? && name != ''>-->
+	                    <!--AND USER_ACCT_CN LIKE ('%'||:name||'%')-->
+	                <!--</#if>-->
+	                <!--<#if userSerial?? && userSerial != ''>-->
+	                    <!--AND USER_SERIAL = :userSerial-->
+	                <!--</#if>-->
+	                 <!--ORDER BY CREATE_DT DESC-->
+			<!--]]>-->
+        <!--</sql>-->
+
+        <!--分页查询用户信息	shiyy-->
+        <sql id="pageFindTFwOrmUserEntity">
+            <![CDATA[
+                SELECT
+	                t_user.USER_ID,
+	                t_user.USER_SERIAL,
+	                t_user.USER_ACCT_CN,
+	                t_user.USER_ACCT,
+	                t_user.CREATE_DT
+                FROM
+	                T_FW_ORM_USER t_user
+                WHERE
+                    t_user.VALID_SIGN = 'Y'
+	                AND t_user.USER_ACCT_TYPE = 'NORMAL'
+	                <#if name?? && name != ''>
+	                    AND USER_ACCT_CN LIKE ('%'||:name||'%')
+	                </#if>
+	                <#if userSerial?? && userSerial != ''>
+	                    AND USER_SERIAL = :userSerial
+	                </#if>
+	                 ORDER BY CREATE_DT DESC
+			]]>
+        </sql>
+
+        <!--根据人员编号查询人员	shiyy-->
+        <sql id="findTFwOrmUserEntity">
+            <![CDATA[
+                SELECT
+                    *
+                FROM
+	                T_FW_ORM_USER
+                WHERE
+                    VALID_SIGN = 'Y'
+                    <#if userSerial?? && userSerial != ''>
+	                    AND USER_SERIAL = :userSerial
+	                </#if>
+                    <#if notUserId?? && notUserId != ''>
+	                    AND USER_ID != :notUserId
+	                </#if>
+			]]>
+        </sql>
+
+        <!--人员添加	shiyy-->
+        <sql id="addTFwOrmUserEntity">
+            <![CDATA[
+                INSERT INTO T_FW_ORM_USER (
+	                USER_ID,CREATE_DT,CREATE_USER_ID,CREATE_USER_ACCT,CREATE_USER_ROLE,UPDATE_DT,UPDATE_USER_ID,UPDATE_USER_ACCT,UPDATE_USER_ROLE,VALID_SIGN,USER_ACCT,USER_ACCT_CN,USER_ACCT_PWD,USER_ACCT_DESC,USER_ACCT_TYPE,USER_SERIAL,USER_SEX,USER_BIRTH,USER_EMAIL,USER_MOBILE,USER_TEL,USER_HEAD_PIC,O_SERIAL,USER_INITIAL_PWD,USER_FAX)
+                VALUES(
+		            :USER_ID,:CREATE_DT,:CREATE_USER_ID,:CREATE_USER_ACCT,:CREATE_USER_ROLE,:UPDATE_DT,:UPDATE_USER_ID,:UPDATE_USER_ACCT,:UPDATE_USER_ROLE,:VALID_SIGN,:USER_ACCT,:USER_ACCT_CN,:USER_ACCT_PWD,:USER_ACCT_DESC,:USER_ACCT_TYPE,:USER_SERIAL,:USER_SEX,:USER_BIRTH,:USER_EMAIL,:USER_MOBILE,:USER_TEL,:USER_HEAD_PIC,:O_SERIAL,:USER_INITIAL_PWD,:USER_FAX)
+			]]>
+        </sql>
+
+        <!--人员更新	shiyy-->
+        <sql id="updateTFwOrmUserEntity">
+            <![CDATA[
+                UPDATE T_FW_ORM_USER
+                SET
+                    UPDATE_DT = :UPDATE_DT,
+                    UPDATE_USER_ID = :UPDATE_USER_ID,
+                    UPDATE_USER_ACCT = :UPDATE_USER_ACCT,
+                    UPDATE_USER_ROLE = :UPDATE_USER_ROLE,
+                    USER_ACCT = :USER_ACCT,
+                    USER_ACCT_CN = :USER_ACCT_CN,
+                    USER_ACCT_PWD = :USER_ACCT_PWD,
+                    USER_SERIAL = :USER_SERIAL
+                WHERE
+                    USER_ID = :USER_ID
+            ]]>
+        </sql>
+
+        <!-- 删除用户（逻辑删除）	shiyy-->
+        <sql id="deleteUserInfo">
+            <![CDATA[
+                UPDATE T_FW_ORM_USER
+                SET
+                    VALID_SIGN = :VALID_SIGN
+                WHERE
+                    USER_ID = :USER_ID
+                ]]>
+        </sql>
+
+        <!--&lt;!&ndash;根据人员编号查询人员全部信息(编辑&查看使用)	shiyy&ndash;&gt;-->
+        <!--<sql id="findTFwOrmUserEntityAllById">-->
+            <!--<![CDATA[-->
+                <!--SELECT-->
+	                <!--t_user.USER_ID,-->
+	                <!--t_user.USER_SERIAL,-->
+	                <!--t_user.USER_ACCT_CN,-->
+	                <!--t_user.USER_ACCT,-->
+	                <!--t_user.USER_ACCT_PWD,-->
+	                <!--t_role.ROLE_SERIAL,-->
+	                <!--t_map.ROLE_U_O_MAP_ID-->
+                <!--FROM-->
+	                <!--T_FW_ORM_USER t_user LEFT INNER T_FW_ORM_ROLE_U_O_MAP t_map ON t_user.USER_ID = t_map.USER_ID-->
+	                <!--INNER JOIN T_FW_ORM_ROLE t_role ON t_map.ROLE_ID = t_role.ROLE_ID-->
+                <!--WHERE-->
+                    <!--t_user.VALID_SIGN = 'Y'-->
+                    <!--AND t_role.VALID_SIGN = 'Y'-->
+                    <!--AND t_role.ROLE_SERIAL != 'BIANJI'-->
+	                <!--AND t_user.USER_ACCT_TYPE = 'NORMAL'-->
+                    <!--<#if userId?? && userId != ''>-->
+	                    <!--AND t_user.USER_ID = :userId-->
+	                <!--</#if>-->
+			<!--]]>-->
+        <!--</sql>-->
+
+        <!--根据人员编号查询人员全部信息(编辑&查看使用)	shiyy-->
+        <sql id="findTFwOrmUserEntityAllById">
+            <![CDATA[
+                SELECT
+	                t_user.USER_ID,
+	                t_user.USER_SERIAL,
+	                t_user.USER_ACCT_CN,
+	                t_user.USER_ACCT,
+	                t_user.USER_ACCT_PWD
+                FROM
+	                T_FW_ORM_USER t_user
+                WHERE
+                    t_user.VALID_SIGN = 'Y'
+	                AND t_user.USER_ACCT_TYPE = 'NORMAL'
+                    <#if userId?? && userId != ''>
+	                    AND t_user.USER_ID = :userId
+	                </#if>
+			]]>
+        </sql>
+    </class>
+</template>

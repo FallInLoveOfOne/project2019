@@ -1,0 +1,172 @@
+/* 排版文字占用宽度 */
+.mw80 { min-width: 80px; }
+.mw100 { min-width: 100px; }
+html, body { 
+    width: 100%; 
+    height: 100%; 
+    min-width: 1366px;
+}
+.content {
+    font-family: 'MicrosoftYaHei';
+}
+.content-box {
+    padding: 0 20px;
+}
+.title {
+    /* height: 52px; */
+    height: 100px;
+    line-height: 80px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 160px;
+    margin-top: 10px;
+}
+.pro-pic {
+    height: 100%;
+}
+.pro-pic .pro-top {
+    width: 70px;
+    height: 64px;
+    margin: 5px auto;
+}
+.pro-pic .pro-bottom {
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+.pro-pic .pro-now {
+    color: #1773d0;
+}
+.pro-bar {
+    width: 144px;
+    height: 15px;
+    /* background-color: #dbdbdb; */
+    margin-top: 43px;
+    background-image: url('../imgs/info_pro_13.jpg');
+    background-size: 114px 15px;
+    background-repeat: no-repeat;
+}
+.bar-now {
+    background-image: url('../imgs/compare_pro_06.jpg');
+    background-size: 114px 15px;
+    background-repeat: no-repeat;
+}
+.check-top,
+.comp-top,
+.bill-top,
+.out-top {
+    background-size: 70px 64px;
+    background-repeat: no-repeat;
+}
+.check-top {
+    background-image: url('../imgs/info_01_03.png');
+}
+.comp-top {
+    background-image: url('../imgs/compare_02_03.png');
+}
+.bill-top {
+    background-image: url('../imgs/info_03_08.png');
+}
+.out-top {
+    background-image: url('../imgs/info_04_10.png');
+}
+.img-box {
+    /* display: table;
+    padding: 0 200px 0;
+    margin: 0 auto; */
+    height: 350px !important;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -453px;
+    margin-top: -115px;
+}
+.option-box {
+    /* display: table-cell;
+    vertical-align: middle; */
+    width: 906px;
+    height: 100%;
+    margin: 0 auto;
+}
+.old-img, .text-img, .new-img {
+    width: 300px;
+    height: 350px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px 
+    rgba(16, 50, 85, 0.1);
+}
+.text-img { 
+    margin: 0 3px;
+    box-shadow: none; 
+}
+.upload-btn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 10px;
+    color: #1773d0;
+    cursor: pointer;
+}
+.old-top, .new-top {
+    width: 300px;
+    height: 300px;
+}
+.old-top img, .new-top img {
+    width: 100%;
+    height: 100%;
+}
+.old-bottom, .new-bottom {
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.text-box {
+    height: 200px;
+    width: 300px;
+    margin-top: 150px;
+}
+.wrong-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 19px;
+    /* background-image: url('../imgs/compare_wrong_06.jpg'); */
+    /* background-size: 60px 60px; */
+    /* background-repeat: no-repeat; */
+}
+.wrong-img i {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 60px;
+    color: #fa6c5d;
+}
+.wrong-text {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 60px;
+}
+.layui-btn {
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.layui-btn:first-child {
+    background-color: #dbdbdb;
+    font-size: 14px;
+    color: #999;
+    margin: 0 15px 0 53px;
+}
+.layui-btn:first-child+.layui-btn {
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+}

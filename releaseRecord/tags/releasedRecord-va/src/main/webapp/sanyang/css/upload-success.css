@@ -1,0 +1,260 @@
+/* 鎺掔増鏂囧瓧鍗犵敤瀹藉害 */
+.mw80 { min-width: 80px; }
+.mw100 { min-width: 100px; }
+html, body { 
+    width: 100%; 
+    height: 100%; 
+    min-width: 1366px;
+}
+.content {
+    font-family: 'MicrosoftYaHei';
+}
+.content-box {
+    padding: 0 20px;
+}
+.title {
+    /* height: 52px; */
+    height: 100px;
+    line-height: 80px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 160px;
+    margin-top: 10px;
+}
+.pro-pic {
+    height: 100%;
+}
+.pro-pic .pro-top {
+    width: 70px;
+    height: 64px;
+    margin: 5px auto;
+}
+.pro-pic .pro-bottom {
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+.pro-pic .pro-now {
+    color: #1773d0;
+}
+.pro-bar {
+    width: 144px;
+    height: 15px;
+    margin-top: 43px;
+    background-image: url('../imgs/info_pro_13.jpg');
+    background-size: 114px 15px;
+    background-repeat: no-repeat;
+}
+.bar-now {
+    background-image: url('../imgs/compare_pro_06.jpg');
+    background-size: 114px 15px;
+    background-repeat: no-repeat;
+}
+.check-top,
+.comp-top,
+.bill-top,
+.out-top {
+    background-size: 70px 64px;
+    background-repeat: no-repeat;
+}
+.check-top {
+    background-image: url('../imgs/info_01_03.png');
+}
+.comp-top {
+    background-image: url('../imgs/compare_02_03.png');
+}
+.bill-top {
+    background-image: url('../imgs/compare_03_03.png');
+}
+.out-top {
+    background-image: url('../imgs/compare_04_03.png');
+}
+.img-box {
+    padding: 70px 200px 0;
+    font-family: 'MicrosoftYaHei';
+}
+.upload-title {
+	height: 21px;
+	font-size: 20px;
+    line-height: 21px;
+    text-align: center;
+	color: #333;
+}
+.file-detail {
+    height: 14px;
+	font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #999;
+    margin-top: 8px;
+}
+.upload-area {
+	width: 500px;
+	height: 100px;
+	background-color: #fff;
+	border-radius: 4px;
+    border: 1px dashed #ddd;
+    margin: 20px auto 30px;
+}
+.file-explain {
+    height: 15px;
+	font-size: 14px;
+    line-height: 15px;
+    text-align: center;
+    color: #999;
+    margin: 42px auto;
+}
+.file-open {
+	font-size: 14px;
+    color: #1773d0;
+    cursor: pointer;
+}
+.upload-list {
+    width: 500px;
+    height: 120px;
+    margin: 0 auto;
+}
+.upload-list li {
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+.file-pic {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    /* background-image: url('../imgs/up_pdf_03.jpg');
+    background-size: 40px 40px;
+    background-repeat: no-repeat; */
+}
+.file-pic i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 40px;
+    color: #ea5f63;
+}
+.upload-list li:first-child+li .file-pic i {
+    /* background-image: url('../imgs/up-doc_06.jpg'); */
+    color: #3399ff;
+}
+
+.file-name .name-text {
+    height: 16px;
+    line-height: 16px;
+	font-size: 14px;
+	color: #333;
+}
+.file-name i {
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+}
+.file-progress {
+    width: 400px;
+    height: 40px;
+}
+.progress-bar {
+    height: 4px;
+    margin: 3px 0 4px;
+}
+.file-size {
+    height: 12px;
+    line-height: 12px;
+	font-size: 12px;
+	color: #999;
+}
+.file-success {
+    color: #1773d0;
+    font-size: 12px;
+}
+.btn-box {
+    width: 200px;
+    height: 34px;
+    margin: 50px auto 0;
+}
+.layui-btn {
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+.layui-btn:first-child {
+    background-color: #1773d0;
+    font-size: 14px;
+    color: #fff;
+}
+.layui-btn:first-child+.layui-btn {
+    color: #333;
+    font-size: 14px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+ /* 寮瑰嚭灞� */
+.mask-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 102;
+    left: 0;
+    top: 0;
+    background-color: rgba(178, 178, 178, .3)
+}
+.mask {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -210px;
+    margin-top: -100px;
+    width: 384px;
+    height: 160px;
+    padding: 20px 18px;
+	background-color: #fff;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+}
+.right-close {
+    text-align: right;
+}
+.right-close i {
+    width: 12px;
+    height: 12px;
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+}
+.mask-text {
+    margin: 40px 20px;
+}
+.mask-text span:first-child i {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 30px;
+    color: #41bf71;
+    margin-right: 15px;
+    /* background-image: url('../imgs/mask_01_03.jpg'); */
+    /* background-size: 30px 30px; */
+    /* background-repeat: no-repeat; */
+}
+.mask-text span:first-child+span {
+    display: block;
+    height: 37px;
+    width: 292px;
+    font-size: 16px;
+    font-family: 'MicrosoftYaHei';
+    color: #333;
+}
+.mask-btn {
+    height: 30px;
+}
+.mask-btn .layui-btn:first-child {
+    margin-left: 15px;
+}

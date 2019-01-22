@@ -1,0 +1,165 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f5f7fa;
+}
+.content {
+    margin: 20px;
+    float: left;
+}
+/* 上面的查询 */
+.content-top {
+    height: 34px;
+    background-color: #f7f9fb;
+    padding-left: 20px;
+    /* box-shadow: 0 0 10px rgba(16, 50, 85, 0.1); */
+}
+.tab-report {
+    width: 110px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #fff;
+    font-family: 'MicrosoftYaHei';
+	font-size: 14px;
+    border-radius: 2px 2px 0px 0px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.mounth-report {
+    background-color: #6bc8ea;
+}
+.season-report {
+    background-color: #7dcfb6;
+}
+.year-report {
+    background-color: #f4c085;
+}
+.bar-report {
+    width: 90px;
+    height: 4px;
+    border-radius: 1px;
+    position: absolute;
+    left: 10px;
+    top: 39px;
+    display: none;
+}
+.bar-mounth {
+    background-color: #6bc8ea;
+}
+.bar-season{
+    background-color: #7dcfb6;
+}
+.bar-year {
+    background-color: #f4c085;
+}
+.layui-form-radio {
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+/* 列表 */
+.content-bottom {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(16, 50, 85, 0.1);
+}
+.bar-box {
+    height: 4px;
+    margin: 0 20px;
+    padding-top: 5px;
+    /* background-color: #f5f7fa; */
+}
+.dpblock { display: block; }
+.dpnone { display: none; }
+
+.table-box {
+    margin: 10px 20px 0;
+}
+.table-box .layui-table {
+    width: 100%;
+    color: #323232;
+}
+.table-box .layui-form {
+    margin: 0;
+}
+.table-box .editbtn,
+.table-box .delbtn,
+.table-box .checkbtn {
+    cursor: pointer;
+}
+.table-box .editbtn{
+    margin: 0 5px;
+}
+.table-box .layui-box {
+    float: right;
+}
+.layui-table thead tr {
+    background-color: #f6f7fb;
+}
+.layui-table-cell {
+    color: #323232;
+    font-size: 13px;
+}
+.layui-table-cell .layui-btn-primary,
+.layui-table-cell .layui-btn-xs {
+    border: none;
+    color: #2a93ff;
+    background-color: transparent;
+}
+.layui-table td {
+    border-color: #efefef;
+}
+tbody tr:hover .layui-table-cell .layui-btn-primary, 
+tbody tr:hover .layui-table-cell .layui-btn-xs {
+    background-color: #f2f2f2;
+}
+
+.report-main {
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(10, 32, 55, .1);
+    -webkit-box-shadow: 0px 0px 20px rgba(10, 32, 55, .1);
+    -moz-box-shadow: 0px 0px 20px rgba(10, 32, 55, .1);
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+}
+.report-title {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+    height: 50px;
+    margin-top: 10px;
+}
+.report-info {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 400px;
+    margin: 30px 0 20px;
+    font-size: 14px;
+}
+.layui-table-page,
+.layui-form {
+    border: none;
+}
+.layui-table-view .layui-table[lay-skin=line] {
+    border: none;
+}
+.layui-table-body .layui-table[lay-skin=line] {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+.layui-btn+.layui-btn {
+    margin-left: 20px;
+}
+.layui-table-page {
+    padding-right: 0;
+}

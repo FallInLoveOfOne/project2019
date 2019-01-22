@@ -1,0 +1,83 @@
+<template>
+	<class id="fcfOutdetoxInfo">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		<sql id="selectByID">
+			<![CDATA[	
+				select "NUMBER","NAME",OTHER_NAME,SEX 
+				from T_FCF_OUTDETOX_INFO
+			]]>
+		</sql> 
+		
+		<sql id="deleteByNumber">
+			<![CDATA[	
+				delete from T_FCF_OUTDETOX_INFO where "NUMBER"=:userNumber
+			]]>
+		</sql>
+		
+		<!-- 存证管理分页 -->
+		<sql id="getEvidencePage">
+			<!-- 前端不传入排的话可在后端排序    order by name desc-->
+			<![CDATA[
+			 	select 
+				"NUMBER","NAME",SEX,SEX_VALUE,DORM_CODE,COME_DATE,OUT_DATE,OUT_TYPE,OUT_TYPE_VALUE,HOLD_BEGIN,HOLD_END,DETOX_END,
+				DETOX_LIMIT,DETOX_LIMIT_VALUE,MANAGE_TYPE_VALUE,MANAGE_TYPE,PICTURE_STATE,OUT_DOC_STATE,BASE_COFIRM_STA,IDENTITY_ID
+				from T_FCF_OUTDETOX_INFO 
+				where ALREADY_OUT='Y'
+				<#if userName?? && userName!= ''>
+					and "NAME" like '%${userName}%'
+				</#if>
+				<#if userNumer?? && userNumer!= ''>
+				 	and "NUMBER" = :userNumer
+				</#if>
+				<#if identity?? && identity!= ''>
+				 	and IDENTITY_ID=:identity
+				</#if>
+				<#if outDateStart?? && outDateStart!= ''>
+            		AND (to_date(TRUE_OUT_DATA,'yyyy-mm-dd')>=to_date(:outDateStart,'yyyy-mm-dd'))
+            	</#if>
+            	<#if outDateEnd?? && outDateEnd!= ''>
+            		AND (to_date(TRUE_OUT_DATA,'yyyy-mm-dd')<=to_date(:outDateEnd,'yyyy-mm-dd'))
+            	</#if>
+            	<#if outTypeValue?? && outTypeValue!= ''>
+				 	and OUT_TYPE_VALUE=:outTypeValue
+				</#if>
+			]]>
+		</sql>
+		
+		<!-- 查询戒毒出所人员详情信息 -->
+		<sql id="selectOutDetoDetails">
+			<![CDATA[	
+				select 
+				"NAME","NUMBER",SEX,SEX_VALUE,BIRTH,POLITICAL_STATUS,POLITICAL_STATUS_VALUE,HOUSE_ADDR,HOUSE_ADDR_VALUE,NATIONALITY_VALUE,PROCESS_STATE,
+				HOUSE_DETAIL_ADDR,EDUCATION,IDENTITY_ID,WORK_ADDR,WORK,WORK_VALUE,HOLD_END,MANAGE_TYPE_VALUE,"POSITION",EDUCATION_VALUE,DETOX_BEGIN,
+				SPECIAL_INDENTITY,IDENTITY_TYPE,IDENTITY_TYPE_VALUE,SPECIALTY,SPECIALTY_VALUE,EMPHASIS_PERSONER_VALUE,SPECIAL_INDENTITY_VALUE,OUT_PLACE_VALUE,
+				DORM_CODE,DETOX_LIMIT,DETOX_LIMIT_VALUE,DETOX_END,OUT_DATE,OUT_REASON,OUT_REASON_VALUE,BRIEF,KS_USER_ID
+				from T_FCF_OUTDETOX_INFO 
+				where 1=1
+				<#if userNumber?? && userNumber!= ''>
+					and "NUMBER"=:userNumber
+				</#if>
+				<#if prisonId?? && prisonId!= ''>
+				 	and DORM_CODE=:prisonId
+				</#if>
+			]]>
+		</sql>
+		
+		<!-- 获取存正管理出所类型数量 -->
+		<sql id="selectOutNumByType">
+			<![CDATA[	
+				select count("NUMBER") as TOTAL 
+				from T_FCF_OUTDETOX_INFO 
+				where ALREADY_OUT='Y'
+				<#if outTypeValue?? && outTypeValue!= ''>
+				 	and OUT_TYPE_VALUE=:outTypeValue
+				</#if>
+			]]>
+		</sql>
+		
+	</class>
+</template>

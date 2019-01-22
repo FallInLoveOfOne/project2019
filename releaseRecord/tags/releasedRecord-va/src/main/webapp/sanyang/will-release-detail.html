@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>待出所人员详情</title>
+        <link rel="stylesheet" href="../resources/commons/css/base.css" />
+        <link rel="stylesheet" href="../resources/commons/css/widget.css" />
+        <link rel="stylesheet" href="../resources/commons/js/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" href="./css/topbar.css" />
+        <link rel="stylesheet" href="./css/will-release-detail.css" />
+        <style>
+            .basic-info, .outer-img, .detention-info, .layui-layer {
+                behavior:url('./css/PIE.htc');
+                position: relative;
+                z-index: 5;
+                box-shadow: 0 0 10px 0 #eaeef2;
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            <div class="top-l fl">
+                <img src="./imgs/police.png" alt="">
+                <span class="top-l-title">温州市三垟强制隔离戒毒所防放错智能管理系统</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="title">待出所人员详情</div>
+            <!-- 中间基本信息 -->
+            <div class="basic-info">
+                <div class="basic-title">
+                    <i class="iconfont-sy tab-pic">&#xe752;</i>
+                    <span class="title-text">基本信息</span>
+                </div>
+                <div class="basic-content clearfix">
+                    <div class="basic-img fl">
+                        <div class="outer-img">
+                            <img class="inside-img" src="./imgs/detail_01_03.jpg">
+                        </div>
+                    </div>
+                    <div class="basic-detail fl">
+                        <div class="detail-content">
+                            <div class="basic-id detail-item">
+                                <ul class="clearfix">
+                                    <li class="basic-id-list fl">
+                                        <div>
+                                            <span class="mw80">姓名：</span>
+                                            <span>李晓明</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">别名：</span>
+                                            <span>无</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-id-list fl">
+                                        <div>
+                                            <span class="mw80">证件类型：</span>
+                                            <span>身份证</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">证件号码：</span>
+                                            <span>232132143243414</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-id-list fl">
+                                        <div>
+                                            <span class="mw100">性别：</span>
+                                            <span>男</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw100">出生日期：</span>
+                                            <span>1983-03-2</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="basic-city detail-item">
+                                <ul class="clearfix">
+                                    <li class="basic-city-list fl">
+                                        <div>
+                                            <span class="mw80">国籍：</span>
+                                            <span>中国</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">民族：</span>
+                                            <span>汉族</span>
+                                        </div>
+                                        <div>
+                                            <span class="mw80">政治面貌：</span>
+                                            <span>群众</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-city-list fl">
+                                        <div>
+                                            <span class="mw80">人员编号：</span>
+                                            <span>2456683757</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">机关：</span>
+                                            <span>西藏自治区</span>
+                                            </div>
+                                        <div>
+                                            <span class="mw80">人员类别：</span>
+                                            <span>XX类别</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-city-list fl">
+                                        <div>
+                                            <span class="mw100">户籍所在地：</span>
+                                            <span>西藏</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw100">户籍详细地址：</span>
+                                            <span>西藏自治区XX市XX区XX镇XX街道XX号</span>
+                                        </div>
+                                        <div>
+                                            <span class="mw100">工作单位：</span>
+                                            <span>淘宝网络科技有限公司</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="basic-job detail-item">
+                                <ul class="clearfix">
+                                    <li class="basic-job-list fl">
+                                        <div>
+                                            <span class="mw80">职业：</span>
+                                            <span>清洁工</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">职务：</span>
+                                            <span>无</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-job-list fl">
+                                        <div>
+                                            <span class="mw80">文化程度：</span>
+                                            <span>小学</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw80">专长：</span>
+                                            <span>无</span>
+                                        </div>
+                                    </li>
+                                    <li class="basic-job-list fl">
+                                        <div>
+                                            <span class="mw100">重口人员：</span>
+                                            <span>是</span>                                            
+                                        </div>
+                                        <div>
+                                            <span class="mw100">特殊身份：</span>
+                                            <span>无</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 中间拘留信息 -->
+            <div class="detention-info">
+                <div class="detention-title">
+                    <i class="iconfont-sy tab-pic">&#xe752;</i>
+                    <span class="title-text">拘留信息</span>
+                </div>
+                <div class="detention-content">
+                    <ul class="list-box clearfix">
+                        <li class="detention-item fl">
+                            <div>
+                                <span class="mw80">监视号：</span>
+                                <span>7474893</span>                                            
+                            </div>
+                            <div>
+                                <span class="mw80">出所日期：</span>
+                                <span>2013-03-24</span>
+                            </div>
+                            <div>
+                                <span class="mw80">简要案情：</span>
+                                <span>案情XXXXXX</span>
+                            </div>
+                        </li>
+                        <li class="detention-item fl">
+                            <div>
+                                <span class="mw80">戒赌年限：</span>
+                                <span>1年</span>                                            
+                            </div>
+                            <div>
+                                <span class="mw80">出所流程状态：</span>
+                                <span>未出所</span>
+                            </div>
+                        </li>
+                        <li class="detention-item fl">
+                            <div>
+                                <span class="mw80">开始戒毒日期：</span>
+                                <span>2013-03-24</span>                                            
+                            </div>
+                            <div>
+                                <span class="mw80">出所原因：</span>
+                                <span>刑满出所</span>
+                            </div>
+                        </li>
+                        <li class="detention-item fl">
+                            <div>
+                                <span class="mw80">开始戒毒日期：</span>
+                                <span>2013-03-24</span>                                            
+                            </div>
+                            <div>
+                                <span class="mw80">出所去向：</span>
+                                <span>回家</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 底部两个按钮 -->
+            <div class="btn-box fr clearfix">
+                <!-- <button class="layui-btn" data-method="notice">出所</button> -->
+                <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">出所</button>
+                <button class="layui-btn layui-btn-primary">关闭</button>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-config-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/layui/layui.js"></script>
+    <script>
+        // seajs.use(['./js/layout.js','./js/will-release-detail.js']);
+        seajs.use(['./js/will-release-detail.js']);
+    </script>
+</html>

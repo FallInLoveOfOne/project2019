@@ -1,0 +1,53 @@
+<template>
+    <class id="tFwOrmRoleUOMapEntity">
+        <!--添加用户角色	shiyy-->
+        <sql id="addTFwOrmRoleUOMapEntity">
+            <![CDATA[
+                INSERT INTO T_FW_ORM_ROLE_U_O_MAP (
+	                ROLE_U_O_MAP_ID,O_ID,ROLE_ID,USER_ID,USER_DISPLAY_ORDER,ROLE_U_O_MAP_TYPE,CREATE_DT,CREATE_USER_ID,CREATE_USER_ACCT,CREATE_USER_ROLE,UPDATE_DT,UPDATE_USER_ID,UPDATE_USER_ACCT,UPDATE_USER_ROLE)
+                (SELECT
+                    :ROLE_U_O_MAP_ID,
+                    :O_ID,
+                     ROLE_ID,
+                    :USER_ID,
+                    :USER_DISPLAY_ORDER,
+                    :ROLE_U_O_MAP_TYPE,
+                    :CREATE_DT,
+                    :CREATE_USER_ID,
+                    :CREATE_USER_ACCT,
+                    :CREATE_USER_ROLE,
+                    :UPDATE_DT,
+                    :UPDATE_USER_ID,
+                    :UPDATE_USER_ACCT,
+                    :UPDATE_USER_ROLE
+                 FROM
+                    T_FW_ORM_ROLE
+                 WHERE
+                    ROLE_SERIAL = :ROLE_SERIAL
+                )
+			]]>
+        </sql>
+
+        <!--修改用户角色	shiyy-->
+        <sql id="updateTFwOrmRoleUOMapEntity">
+            <![CDATA[
+                UPDATE T_FW_ORM_ROLE_U_O_MAP
+                SET(
+	                ROLE_ID,UPDATE_DT,UPDATE_USER_ID,UPDATE_USER_ACCT,UPDATE_USER_ROLE)
+                =(
+		            SELECT
+		                ROLE_ID,
+		                :UPDATE_DT,
+		                :UPDATE_USER_ID,
+		                :UPDATE_USER_ACCT,
+		                :UPDATE_USER_ROLE
+		            FROM
+		                T_FW_ORM_ROLE
+		            WHERE
+		                ROLE_SERIAL = :ROLE_SERIAL)
+		        WHERE
+		            ROLE_U_O_MAP_ID = :ROLE_U_O_MAP_ID
+			]]>
+        </sql>
+    </class>
+</template>

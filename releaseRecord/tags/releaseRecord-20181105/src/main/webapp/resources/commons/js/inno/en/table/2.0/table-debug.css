@@ -1,0 +1,57 @@
+.tblReport{
+	font: 12px/1.5;
+	border: 1px solid #E6E2E1;
+	color: #555555;
+	margin-bottom:10px
+}
+
+
+.rTitle {
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+
+.tblReport_msg {
+	background: #E6E6E6;
+	min-width: 83px;
+	_min-widht: 83px;
+	min-height: 50px;
+	_min_height: 5px;
+}
+
+.tblReport_msg_div li {
+	float: left;
+}
+
+.tblReport_msg_con {
+	color: #fff;
+	line-height: 20px;
+}
+
+
+.tblReport_title {
+	background: #E6E6E6;
+	width:83px;
+	min-width: 83px;
+	_min-width: 83px;
+	font-weight: bold;
+}
+
+.tblReport tr td {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 10px 0 10px;
+	font-size: 11px;
+	border: 1px solid #999999;
+	width:1000px;
+}
+
+.qsTd {
+    font-weight: bold;
+}
+
+

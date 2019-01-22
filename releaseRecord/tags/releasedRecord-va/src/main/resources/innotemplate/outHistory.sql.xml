@@ -1,0 +1,25 @@
+<template>
+	<class id="outHistory">
+		<sql id="graphicsql">
+			<![CDATA[
+			   ${graphicsql} 
+			]]>
+		</sql>
+		
+		<!-- 查询出所记录 -->
+		<sql id="getoutHisList">
+			<![CDATA[
+			 	select 
+				OUT_HISTORY_ID,CREATE_USER_NAME,CREATE_DATE,OUT_TYPE,OUT_TYPE_VAL,
+				OUT_TIME,OUT_PERSON_NUMBER,OUT_PERSON_NAME
+				from T_OUT_HISTORY 
+				where 1=1
+				<#if userNumber?? && userNumber!= ''>
+					and OUT_PERSON_NUMBER=:userNumber
+				</#if>
+				order by OUT_TIME desc
+			]]>
+		</sql>
+		
+	</class>
+</template>

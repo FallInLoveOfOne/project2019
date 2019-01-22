@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>sanyang</title>
+	<link rel="stylesheet" href="../resources/commons/css/base.css" />
+	<link rel="stylesheet" href="../resources/commons/css/widget.css" />
+	<link rel="stylesheet" href="../resources/commons/js/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="./css/topbar.css" />
+	<link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body class="outside">
+	<div class="top-bar">
+        <div class="top-l fl">
+			<img src="./imgs/police.png" alt="">
+			<span class="top-l-title">温州市三垟强制隔离戒毒所防放错智能管理系统</span>
+		</div>
+		<div class="top-r fr">
+			<i class="iconfont-sy icon-user">&#xe756;</i>
+			<span class="top-r-name">张小红</span>
+			<i class="iconfont-sy icon-logout">&#xe73b;</i>
+		</div>
+	</div>
+	<div class="main clearfix">
+		<div class="main-left fl">
+			<div class="main-menu fl">
+				<ul class="menus">
+					<li>
+						<ul>
+							<li class="sub-menu cur index">
+								<span class="single-tree">首页</span>
+							</li>   
+							<li class="sub-menu cur now normal">
+								<span class="single-tree">出所管理</span>
+							</li> 
+							<li class="sub-menu cur management">
+								<span class="single-tree">存证管理</span>
+							</li>
+							<li class="sub-menu cur report">
+								<span class="single-tree">统计报告</span>
+							</li>                                        
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="sub-menu">
+								<i class="iconfont-sy">&#xe754;</i><span>数据接口管理</span>
+							</li>
+							<li class="sub-menu2">
+								<div class="menu-child">
+									<i class="iconfont-sy">&#xe747;</i><span>数据接口列表</span>
+								</div>
+								<div class="menu-child port">
+									<i class="iconfont-sy">&#xe746;</i><span>接口调用统计</span>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="sub-menu">
+								<i class="iconfont-sy">&#xe754;</i><span>系统管理</span>
+							</li>
+							<li class="sub-menu2">
+								<div class="menu-child password">
+									<i class="iconfont-sy">&#xe749;</i><span>修改密码</span>
+								</div>
+								<div class="menu-child account">
+									<i class="iconfont-sy">&#xe748;</i><span>账号管理</span>
+								</div>
+								<div class="menu-child character">
+									<i class="iconfont-sy">&#xe745;</i><span>角色管理</span>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-right fl">
+			<iframe class="fl" id="iframe" src="./iframe/release/normal.html" name="iframe" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+	</div>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/seajs/sea-config-debug.js"></script>
+	<script type="text/javascript" src="../resources/commons/js/layui/layui.js"></script>
+    <script>
+        seajs.use('./js/main.js');
+    </script>
+</body>
+</html>
